@@ -20,6 +20,10 @@ from todo.views import ToDosListAPIView,ToDosDetailAPIView
 
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="index.html")),
+    url(r'^admin/', admin.site.urls),
     url(r'^api/todos/$', ToDosListAPIView.as_view(), name="todo_list_api_view"),
     url(r'^api/todos/(?P<pk>\d+)$', ToDosDetailAPIView.as_view(), name="todo_detail_api_view")
+]
+urlpatterns += [
+    url(r'^api-auth/', include('rest_framework.urls')),
 ]
